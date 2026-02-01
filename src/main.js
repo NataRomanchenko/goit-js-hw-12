@@ -50,7 +50,7 @@ async function fetchImages() {
 
     const data = await getImagesByQuery(query, page);
 
-    // якщо нічого не знайдено з першого запиту
+    
     if (data.hits.length === 0 && page === 1) {
       hideLoadMoreButton();
       iziToast.error({
@@ -60,14 +60,14 @@ async function fetchImages() {
       return;
     }
 
-    // рахуємо кількість сторінок ОДИН раз
+    
     if (page === 1) {
       totalPages = Math.ceil(data.totalHits / PER_PAGE);
     }
 
     createGallery(data.hits);
 
-    // якщо це остання сторінка
+    
     if (page >= totalPages) {
       hideLoadMoreButton();
       iziToast.info({
